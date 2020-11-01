@@ -12,7 +12,7 @@ export class Ec2RunnersStack extends cdk.Stack {
     const runnerSecurityGroup = new ec2.SecurityGroup(this, 'gitlab-runner-security-group', {
       vpc,
       securityGroupName: "gitlab-runner-sg",
-      description: 'Allow ssh access to ec2 gitlab-runner instances from anywhere',
+      description: 'Allow ssh, http and https access to ec2 gitlab-runner instances from anywhere',
       allowAllOutbound: true
     });
     runnerSecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(22), 'allow public ssh access')
